@@ -24,7 +24,7 @@ const corsOptions = {
     credentials:true
 }
 
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.static(path.join(__dirname,"/frontend/dist")));
 app.get("*",(_,res)=>{
     res.sendFile(path.resolve(__dirname,"frontend","dist","index.html"));
