@@ -20,11 +20,13 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 const corsOptions = {
-    origin:process.env.CORS,
-    credentials:true
-}
+    origin: (origin, callback) => {
+        callback(null, true);
+    },
+    credentials: true
+};
 
-app.use(cors());
+app.use(cors(corsOptions));
 // app.use(express.static(path.join(__dirname,"/frontend/dist")));
 // app.get("*",(_,res)=>{
 //     res.sendFile(path.resolve(__dirname,"frontend","dist","index.html"));
