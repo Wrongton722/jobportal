@@ -27,6 +27,9 @@ const JobDescription = () => {
                 const updatedSingleJob = {...singleJob, applications:[...singleJob.applications,{applicant:user?._id}]}
                 dispatch(setSingleJob(updatedSingleJob)); // helps us to real time UI update
                 toast.success(res.data.message);
+                if(error.response.data.message === 'User not authenticated'){    
+                navigate("/login")
+            }
 
             }
         } catch (error) {
