@@ -98,6 +98,12 @@ export const updateCompany = async (req, res) => {
         })
 
     } catch (error) {
+        if (error.code === 11000) {
+        return res.status(400).json({
+        message: "Company name already exists.",
+        success: false,
+      });
+    }
         console.log(error);
     }
 }
